@@ -53,6 +53,24 @@ html, body {
   transform: translate(-50%, -50%);
 }
 
+/* ===== PAGE ENTRANCE ANIMATIONS ===== */
+@keyframes dropDown {
+  from { opacity: 0; transform: translate(-50%, -30px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 /* ===== PILL NAVBAR ===== */
 .header {
   position: fixed;
@@ -62,6 +80,8 @@ html, body {
   width: 92%;
   max-width: 1100px;
   z-index: 1000;
+  opacity: 0;
+  animation: dropDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 .navbar-pill {
@@ -271,6 +291,8 @@ html, body {
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255,255,255,0.08);
+  opacity: 0;
+  animation: fadeInScale 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
 }
 
 /* ===== HOME CONTENT (left) ===== */
@@ -284,6 +306,8 @@ html, body {
   font-weight: 600;
   color: var(--text);
   margin-bottom: 4px;
+  opacity: 0;
+  animation: slideUp 0.8s ease 0.4s forwards;
 }
 
 .name {
@@ -292,6 +316,8 @@ html, body {
   color: #fff;
   line-height: 1.1;
   margin-bottom: 14px;
+  opacity: 0;
+  animation: slideUp 0.8s ease 0.5s forwards;
 }
 
 .role {
@@ -300,6 +326,8 @@ html, body {
   color: var(--text);
   margin-bottom: 18px;
   min-height: 60px;
+  opacity: 0;
+  animation: slideUp 0.8s ease 0.6s forwards;
 }
 
 .role .multiple-text {
@@ -312,6 +340,8 @@ html, body {
   color: var(--text-muted);
   margin-bottom: 30px;
   max-width: 480px;
+  opacity: 0;
+  animation: slideUp 0.8s ease 0.7s forwards;
 }
 
 /* Social icons */
@@ -319,6 +349,8 @@ html, body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: slideUp 0.8s ease 0.8s forwards;
 }
 
 .social-media a {
@@ -349,6 +381,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  animation: slideLeft 1s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
 }
 
 .hologram-container {
