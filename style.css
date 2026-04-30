@@ -142,28 +142,30 @@ body {
 /* ===== TEXT ===== */
 .loading-portfolio {
   color: #c9a84c;
-  font-size: 11px;
-  letter-spacing: 2.5px;
+  font-size: 14px;
+  letter-spacing: 3px;
   font-style: italic;
   text-align: center;
-  margin-top: -10px;
+  margin-top: 30px;
+  margin-bottom: 4px;
 }
 
 .loading-title {
   color: #ffffff;
-  font-size: 22px;
+  font-size: 28px;
   font-family: 'Playfair Display', Georgia, serif;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
   text-align: center;
   text-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
 }
 
 .loading-subtitle {
   color: #c9a84c;
-  font-size: 11px;
-  letter-spacing: 2.5px;
+  font-size: 13px;
+  letter-spacing: 3px;
   font-style: italic;
-  margin-top: -8px;
+  margin-top: 4px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -302,20 +304,22 @@ body {
   }
 
   .loading-portfolio {
-    font-size: 16px;
-    letter-spacing: 3.5px;
-    margin-top: -15px;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-top: 40px;
+    margin-bottom: 8px;
   }
 
   .loading-title {
-    font-size: 40px;
-    letter-spacing: 5px;
+    font-size: 48px;
+    letter-spacing: 6px;
   }
 
   .loading-subtitle {
     font-size: 16px;
-    letter-spacing: 3.5px;
-    margin-top: -10px;
+    letter-spacing: 4px;
+    margin-top: 8px;
+    margin-bottom: 40px;
   }
 
   .loading-bar-wrap {
@@ -361,20 +365,22 @@ body {
   }
 
   .loading-portfolio {
-    font-size: 20px;
-    letter-spacing: 4px;
-    margin-top: -20px;
+    font-size: 22px;
+    letter-spacing: 5px;
+    margin-top: 50px;
+    margin-bottom: 12px;
   }
 
   .loading-title {
-    font-size: 56px;
-    letter-spacing: 6px;
+    font-size: 64px;
+    letter-spacing: 8px;
   }
 
   .loading-subtitle {
-    font-size: 20px;
-    letter-spacing: 4px;
-    margin-top: -12px;
+    font-size: 18px;
+    letter-spacing: 5px;
+    margin-top: 12px;
+    margin-bottom: 50px;
   }
 
   .loading-bar-wrap {
