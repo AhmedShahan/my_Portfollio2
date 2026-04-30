@@ -40,7 +40,7 @@ body {
   /* Solid fallback */
   background-image:
     linear-gradient(160deg, rgba(5, 13, 24, 0.75) 0%, rgba(10, 26, 42, 0.70) 50%, rgba(5, 13, 24, 0.75) 100%),
-    url('pictrure/video.gif');
+    url('pictrure/video2.gif');
 
   background-size: cover;
   background-position: center;
