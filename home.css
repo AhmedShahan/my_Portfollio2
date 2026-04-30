@@ -473,6 +473,12 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
+  .bg-gif {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   .glass-card {
     flex-direction: column-reverse;
     padding: 40px 28px;
