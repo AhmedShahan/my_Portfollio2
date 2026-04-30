@@ -22,9 +22,27 @@ html,
 body {
   height: 100%;
   font-family: 'Playfair Display', Georgia, serif;
-  background: linear-gradient(160deg, #050d18 0%, #0a1a2a 50%, #050d18 100%);
+  background: transparent;
   color: var(--text);
   overflow-x: hidden;
+}
+
+/* ===== BACKGROUND GIF ===== */
+.bg-gif {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  background-color: #050d18;
+  /* Solid fallback */
+  background-image:
+    linear-gradient(160deg, rgba(5, 13, 24, 0.92) 0%, rgba(10, 26, 42, 0.88) 50%, rgba(5, 13, 24, 0.92) 100%),
+    url('pictrure/video.gif');
+  background-size: cover;
+  background-position: center;
 }
 
 /* ===== BACKGROUND ORBS (depth for glass) ===== */
@@ -617,7 +635,7 @@ body {
   .hologram-container img {
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: 56%;
     transform: translateX(-50%) translateZ(40px);
     /* Push out of the glass in 3D */
     width: auto;
