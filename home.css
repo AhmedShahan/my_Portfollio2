@@ -406,27 +406,6 @@ html, body {
   background: rgba(201, 168, 76, 0.12);
 }
 
-/* Hologram rings */
-.hologram-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid var(--cyan);
-  opacity: 0.4;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: ring-spin 6s linear infinite;
-}
-
-.ring1 { width: 260px; height: 260px; animation-duration: 5s; border-style: dashed; }
-.ring2 { width: 295px; height: 295px; animation-duration: 8s; animation-direction: reverse; opacity: 0.25; }
-.ring3 { width: 330px; height: 330px; animation-duration: 11s; border-style: dotted; opacity: 0.18; }
-
-@keyframes ring-spin {
-  0%   { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .glass-card {
@@ -445,9 +424,7 @@ html, body {
 
   .hologram-container { width: 220px; height: 220px; }
   .hologram-container img { width: 160px; height: 160px; }
-  .ring1 { width: 185px; height: 185px; }
-  .ring2 { width: 210px; height: 210px; }
-  .ring3 { width: 235px; height: 235px; }
+
 }
 
 @media (max-width: 650px) {
@@ -537,63 +514,17 @@ html, body {
     justify-content: center;
   }
 
-  /* Deep Recessed Circles (Neumorphism) */
-  .hologram-ring {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    animation: none; /* Solid 3D carving */
-    opacity: 1;
-  }
-
-  .ring1 {
-    width: 450px; height: 450px;
-    background: #0a1a2a; /* Match page background */
-    box-shadow: 
-      10px 10px 30px rgba(0,0,0,0.8), 
-      -10px -10px 30px rgba(255,255,255,0.04),
-      inset 20px 20px 40px rgba(0,0,0,0.9),
-      inset -10px -10px 30px rgba(255,255,255,0.05);
-    border: none;
-    z-index: 1;
-  }
-
-  .ring2 {
-    width: 350px; height: 350px;
-    background: #07131e;
-    box-shadow: 
-      0 0 20px rgba(0,0,0,0.9), /* Dark edge */
-      inset 25px 25px 50px rgba(0,0,0,1),
-      inset -10px -10px 30px rgba(255,255,255,0.03);
-    border: none;
-    z-index: 2;
-  }
-
-  .ring3 {
-    width: 250px; height: 250px;
-    background: #040912;
-    box-shadow: 
-      0 0 30px rgba(0,0,0,1), /* Dark edge */
-      inset 30px 30px 60px rgba(0,0,0,1),
-      inset -5px -5px 20px rgba(255,255,255,0.02);
-    border: none;
-    z-index: 3;
-  }
 
   .hologram-container img {
-    position: absolute;
-    bottom: 20px; /* Better alignment inside the portal */
-    left: -40px; /* Shifted left to break bounds naturally */
+    position: relative;
     width: auto;
-    height: 520px; /* Taller to pop out */
+    height: 520px;
     max-width: none;
     border-radius: 0;
     border: none;
     background: transparent;
     object-fit: contain;
     z-index: 10;
-    /* Intense black shadow to the right */
-    filter: drop-shadow(40px 20px 25px rgba(0,0,0,1)); 
+    filter: drop-shadow(20px 10px 20px rgba(0,0,0,0.5)); 
   }
 }
