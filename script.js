@@ -46,7 +46,8 @@ window.addEventListener('load', () => {
 
   if (continueBtn) {
     continueBtn.addEventListener('click', () => {
-      loadingScreen.classList.add('hidden');
+      // Navigate to the main portfolio page
+      window.location.href = 'home.html';
     });
   }
 });
