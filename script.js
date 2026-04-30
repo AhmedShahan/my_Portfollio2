@@ -11,11 +11,15 @@ window.addEventListener('load', () => {
     'Welcome! 🎓'
   ];
 
+  const loadingBarWrap = document.getElementById('loadingBarWrap');
+  const continueBtnWrap = document.getElementById('continueBtnWrap');
+  const continueBtn = document.getElementById('continueBtn');
+
   let progress = 0;
   let msgIndex = 0;
 
   const interval = setInterval(() => {
-    progress += Math.random() * 12 + 5;
+    progress += Math.random() * 3 + 2; 
     if (progress > 100) progress = 100;
 
     loadingBar.style.width = progress + '%';
@@ -30,8 +34,19 @@ window.addEventListener('load', () => {
     if (progress >= 100) {
       clearInterval(interval);
       setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-      }, 600);
+        // Hide loading text and bar
+        loadingText.style.display = 'none';
+        if(loadingBarWrap) loadingBarWrap.style.display = 'none';
+        
+        // Show continue button
+        if(continueBtnWrap) continueBtnWrap.classList.remove('hidden');
+      }, 500);
     }
   }, 150);
+
+  if (continueBtn) {
+    continueBtn.addEventListener('click', () => {
+      loadingScreen.classList.add('hidden');
+    });
+  }
 });
