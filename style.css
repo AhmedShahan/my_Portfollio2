@@ -147,3 +147,122 @@ body {
   letter-spacing: 2px;
   font-style: italic;
 }
+
+/* ===== DESKTOP RESPONSIVENESS ===== */
+@media (min-width: 768px) {
+  .loading-content {
+    gap: 20px;
+  }
+
+  .loading-rings {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 40px;
+  }
+
+  .ring1 {
+    width: 160px;
+    height: 160px;
+  }
+
+  .ring2 {
+    width: 120px;
+    height: 120px;
+    top: 20px;
+    left: 20px;
+  }
+
+  .ring3 {
+    width: 80px;
+    height: 80px;
+    top: 40px;
+    left: 40px;
+  }
+
+  .loading-portfolio {
+    font-size: 16px;
+    letter-spacing: 3.5px;
+    margin-top: -15px;
+  }
+
+  .loading-title {
+    font-size: 40px;
+    letter-spacing: 5px;
+  }
+
+  .loading-subtitle {
+    font-size: 16px;
+    letter-spacing: 3.5px;
+    margin-top: -10px;
+  }
+
+  .loading-bar-wrap {
+    width: 350px;
+    height: 4px;
+    margin-top: 15px;
+  }
+
+  .loading-text {
+    font-size: 16px;
+    letter-spacing: 3px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loading-content {
+    gap: 24px;
+  }
+
+  .loading-rings {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 50px;
+  }
+
+  .ring1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .ring2 {
+    width: 150px;
+    height: 150px;
+    top: 25px;
+    left: 25px;
+  }
+
+  .ring3 {
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: 50px;
+  }
+
+  .loading-portfolio {
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-top: -20px;
+  }
+
+  .loading-title {
+    font-size: 56px;
+    letter-spacing: 6px;
+  }
+
+  .loading-subtitle {
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-top: -12px;
+  }
+
+  .loading-bar-wrap {
+    width: 450px;
+    height: 5px;
+    margin-top: 20px;
+  }
+
+  .loading-text {
+    font-size: 18px;
+    letter-spacing: 4px;
+  }
+}
