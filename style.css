@@ -27,6 +27,7 @@ body {
   justify-content: center;
   flex-direction: column;
   transition: opacity 0.8s ease, visibility 0.8s ease;
+  overflow: hidden;
 }
 
 #loadingScreen.hidden {
@@ -39,6 +40,49 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== MOVING GLASS BAR EFFECT ===== */
+.glass-bar {
+  position: absolute;
+  top: -50vh;
+  width: 150px;
+  height: 200vh;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(201, 168, 76, 0.02) 20%, 
+    rgba(255, 255, 255, 0.06) 50%, 
+    rgba(201, 168, 76, 0.02) 80%, 
+    transparent 100%
+  );
+  transform: rotate(35deg);
+  animation: moveGlass 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-bar-2 {
+  width: 80px;
+  animation-duration: 12s;
+  animation-delay: -6s;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.01) 20%, 
+    rgba(255, 255, 255, 0.04) 50%, 
+    rgba(255, 255, 255, 0.01) 80%, 
+    transparent 100%
+  );
+}
+
+@keyframes moveGlass {
+  0% {
+    left: -100vw;
+  }
+  100% {
+    left: 150vw;
+  }
 }
 
 /* ===== ROTATING RINGS ===== */
