@@ -451,36 +451,37 @@ html, body {
 
   .home-content {
     flex: 1;
-    max-width: 550px;
+    max-width: 600px;
     text-align: left;
   }
 
   .greeting {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: var(--cyan-dark); /* Gold */
-    margin-bottom: -5px;
+    margin-bottom: 12px;
   }
 
   .name {
-    font-size: 5rem;
+    font-size: 4.2rem;
     line-height: 1.1;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    white-space: nowrap; /* Force one line */
   }
 
   .role {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .bio {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.15rem;
+    line-height: 1.9;
     color: var(--text);
     opacity: 0.85;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
 
   .social-media {
