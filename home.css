@@ -406,6 +406,9 @@ html, body {
   background: rgba(201, 168, 76, 0.12);
 }
 
+.img-desktop { display: none; }
+.img-mobile { display: block; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .glass-card {
@@ -528,4 +531,7 @@ html, body {
     z-index: 10;
     filter: drop-shadow(20px 10px 20px rgba(0,0,0,0.5)); 
   }
+
+  .img-desktop { display: block; }
+  .img-mobile { display: none; }
 }
