@@ -93,9 +93,26 @@
 }
 
 @media (max-width: 767px) {
+  .profile-glass-card {
+    flex-direction: column;
+  }
+
+  .profile-image-wrapper {
+    display: none;
+  }
+
+  .profile-sidebar {
+    margin-top: 30px;
+  }
+
+  .timeline-col {
+    margin-bottom: 80px;
+  }
+
   .timeline-heading-left, .timeline-heading-right {
     padding-left: 70px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    color: #00ffee;
   }
 }
 
