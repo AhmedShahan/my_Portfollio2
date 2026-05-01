@@ -34,3 +34,34 @@ document.addEventListener('click', (e) => {
     mobileMenu.classList.remove('open');
   }
 });
+
+// ===== SCROLL SPY FOR NAVBAR =====
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links .nav-link, .mobile-menu a');
+
+const observerOptions = {
+  root: null,
+  rootMargin: '-30% 0px -50% 0px',
+  threshold: 0
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const currentId = entry.target.getAttribute('id');
+      if (currentId) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === '#' + currentId || (currentId === 'home' && href === 'home.html')) {
+            link.classList.add('active');
+          }
+        });
+      }
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  observer.observe(section);
+});
