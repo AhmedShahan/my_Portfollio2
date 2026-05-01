@@ -915,6 +915,18 @@ body {
   line-height: 1.6;
 }
 
+/* Scroll Animation Classes */
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scroll-anim.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Sidebar */
 .profile-sidebar {
   display: flex;
