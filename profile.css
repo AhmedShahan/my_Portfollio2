@@ -97,6 +97,11 @@
     flex-direction: column;
   }
 
+  .timeline-columns {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .profile-image-wrapper {
     display: none;
   }
