@@ -141,6 +141,7 @@
   border-radius: 50%;
   background: var(--cyan);
   z-index: 2;
+  animation: pulseCenter 2s infinite alternate ease-in-out;
 }
 
 .timeline-connector {
@@ -150,6 +151,7 @@
   height: 1px;
   width: 30px;
   background: rgba(201, 168, 76, 0.5);
+  animation: flowConnector 2s infinite alternate ease-in-out;
 }
 
 .timeline-glowing-dot {
@@ -162,6 +164,28 @@
   background: var(--cyan-dark);
   box-shadow: 0 0 12px var(--cyan-dark);
   transform: translateX(-50%);
+  animation: pulseGlow 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px var(--cyan-dark);
+    background-color: var(--cyan-dark);
+  }
+  100% {
+    box-shadow: 0 0 25px var(--cyan), 0 0 40px var(--cyan);
+    background-color: var(--cyan);
+  }
+}
+
+@keyframes pulseCenter {
+  0% { box-shadow: 0 0 0 transparent; }
+  100% { box-shadow: 0 0 12px var(--cyan); }
+}
+
+@keyframes flowConnector {
+  0% { background: rgba(201, 168, 76, 0.4); }
+  100% { background: var(--cyan); }
 }
 
 .timeline-item {
@@ -345,4 +369,60 @@
   background: var(--cyan);
   box-shadow: 0 6px 25px rgba(201, 168, 76, 0.6);
   transform: translateY(-2px);
+}
+
+/* HIGHLIGHT FOR PRESENT ITEM */
+.present-item .timeline-year {
+  color: #c9a84c;
+  animation: presentTextGlow 2s infinite alternate ease-in-out;
+}
+
+@keyframes presentTextGlow {
+  0% { text-shadow: 0 0 2px rgba(201, 168, 76, 0.2); }
+  100% { text-shadow: 0 0 12px rgba(201, 168, 76, 0.8); }
+}
+
+.present-item .timeline-glowing-dot {
+  background-color: #c9a84c !important;
+  box-shadow: 0 0 15px #c9a84c !important;
+  animation: none !important;
+}
+
+/* Radar Ripple Effect */
+.present-item .timeline-glowing-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #c9a84c;
+  transform: translate(-50%, -50%);
+  animation: radarRipple 2s infinite cubic-bezier(0.65, 0, 0.34, 1);
+  z-index: -1;
+}
+
+@keyframes radarRipple {
+  0% {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+  }
+}
+
+.present-item .timeline-connector {
+  background: #c9a84c !important;
+  animation: none !important;
+}
+
+.present-item .timeline-center-dot {
+  background: #c9a84c !important;
+  box-shadow: 0 0 10px #c9a84c !important;
+  animation: none !important;
 }
