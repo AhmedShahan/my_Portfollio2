@@ -236,106 +236,164 @@
 .ws-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 30px;
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 3%;
 }
 
 .ws-card {
-  background: rgba(8, 27, 41, 0.6);
+  background: rgba(8, 27, 41, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 3px solid #c9a84c; /* Default Gold accent */
   border-radius: 16px;
-  padding: 24px;
+  padding: 30px 24px;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s;
+  position: relative;
+  transition: all 0.4s ease;
 }
 
-.ws-card.active-highlight {
-  border-color: #00ffee;
-  background: rgba(0, 255, 238, 0.03);
+.ws-card.featured {
+  border-top-color: #00ffee; /* Cyan accent for latest */
+}
+
+.ws-card:hover {
+  transform: translateY(-8px);
+  background: rgba(8, 27, 41, 0.6);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .ws-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .ws-card-thumb {
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.05);
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 255, 238, 0.05);
+  border: 1px solid rgba(0, 255, 238, 0.15);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: var(--cyan);
+  font-size: 1.8rem;
+  color: #00ffee;
 }
 
-.ws-card-badge-row {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
+.ws-card.gold .ws-card-thumb {
+  background: rgba(201, 168, 76, 0.05);
+  border-color: rgba(201, 168, 76, 0.15);
+  color: #c9a84c;
+}
+
+.latest-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 255, 238, 0.1);
+  color: #00ffee;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  border: 1px solid rgba(0, 255, 238, 0.3);
+}
+
+.org-badge-v3 {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.5);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 5px;
 }
 
 .ws-card-title {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height: 1.3;
 }
 
 .ws-card-meta {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 12px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ws-card-meta i {
+  font-size: 0.9rem;
 }
 
 .ws-card-desc {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 18px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 25px;
 }
 
 .ws-card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 30px;
 }
 
 .ws-card-tag {
-  font-size: 0.65rem;
-  padding: 4px 10px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.ws-card-tag.highlight {
-  border-color: rgba(0, 255, 238, 0.3);
+  font-size: 0.7rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(0, 255, 238, 0.05);
+  border: 1px solid rgba(0, 255, 238, 0.2);
   color: #00ffee;
 }
 
-.ws-view-link {
-  font-size: 0.8rem;
-  color: var(--cyan);
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+.ws-card.gold .ws-card-tag {
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: #c9a84c;
 }
 
-.ws-view-link:hover {
-  text-decoration: underline;
+.ws-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 10px 24px;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 255, 238, 0.3);
+  color: #00ffee;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.ws-card.gold .ws-view-btn {
+  border-color: rgba(201, 168, 76, 0.3);
+  color: #c9a84c;
+}
+
+.ws-view-btn:hover {
+  background: rgba(0, 255, 238, 0.1);
+  border-color: #00ffee;
+  box-shadow: 0 0 20px rgba(0, 255, 238, 0.15);
+}
+
+.ws-card.gold .ws-view-btn:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: #c9a84c;
 }
 
 /* ===== COMING SOON ===== */
