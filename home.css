@@ -193,17 +193,44 @@ body {
   white-space: nowrap;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   background: rgba(201, 168, 76, 0.15);
   color: var(--cyan);
 }
 
+/* Active nav link — cyan glow pill */
 .nav-link.active {
-  color: var(--cyan);
+  background: rgba(0, 255, 238, 0.10);
+  color: #00ffee;
   font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(0, 255, 238, 0.25), inset 0 0 8px rgba(0, 255, 238, 0.08);
+  border: 1px solid rgba(0, 255, 238, 0.30);
+  position: relative;
+}
+
+/* Glowing dot before active link */
+.nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ffee;
+  box-shadow: 0 0 8px #00ffee, 0 0 16px rgba(0, 255, 238, 0.6);
+  animation: navDotPulse 2s infinite ease-in-out;
+}
+
+.nav-link.active {
+  padding-left: 22px; /* make room for the dot */
+}
+
+@keyframes navDotPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px #00ffee; }
+  50%       { opacity: 0.5; box-shadow: 0 0 18px #00ffee, 0 0 30px rgba(0,255,238,0.4); }
 }
 
 /* Dropdown */
