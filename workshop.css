@@ -11,6 +11,105 @@
   overflow: hidden;
 }
 
+/* ===== HERO & STATS (Restored) ===== */
+.workshop-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 3% 40px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.workshop-hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ws-eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 18px;
+}
+
+.ws-title {
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.ws-title span {
+  color: var(--cyan);
+}
+
+.ws-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.52);
+  margin-bottom: 50px;
+}
+
+.ws-stats-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(8, 27, 41, 0.50);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 24px 48px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.ws-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.ws-stat-top {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.ws-stat-num {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #00ffee;
+  line-height: 1;
+}
+
+.ws-stat-plus {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #00ffee;
+  margin-top: 4px;
+}
+
+.ws-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  margin-top: 8px;
+  white-space: nowrap;
+}
+
+.ws-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.10);
+  flex-shrink: 0;
+}
+
 /* ===== TIMELINE ===== */
 .ws-timeline-wrap {
   max-width: 1200px;

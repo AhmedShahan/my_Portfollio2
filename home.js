@@ -36,7 +36,7 @@ document.addEventListener('click', (e) => {
 });
 
 // ===== SCROLL SPY FOR NAVBAR =====
-const sections = document.querySelectorAll('section');
+const sections = document.querySelectorAll('section, main, .workshop-page');
 const navLinks = document.querySelectorAll('.nav-links .nav-link, .mobile-menu a');
 
 const observerOptions = {
