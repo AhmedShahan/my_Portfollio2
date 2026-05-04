@@ -177,6 +177,7 @@ body {
   display: flex;
   align-items: center;
   gap: 4px;
+  position: relative; /* For indicator */
 }
 
 .nav-link {
@@ -187,26 +188,42 @@ body {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 40px;
-  transition: background 0.25s, color 0.25s;
+  transition: color 0.3s ease;
   white-space: nowrap;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-link:hover {
-  background: rgba(201, 168, 76, 0.15);
   color: var(--cyan);
 }
 
-/* Active nav link — cyan glow pill */
+/* Sliding Indicator */
+.nav-indicator {
+  position: absolute;
+  height: calc(100% - 4px);
+  top: 2px;
+  left: 0;
+  background: rgba(0, 255, 238, 0.1);
+  border: 1px solid rgba(0, 255, 238, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 238, 0.2);
+  border-radius: 40px;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.nav-indicator.visible {
+  opacity: 1;
+}
+
+/* Active nav link — cyan text glow */
 .nav-link.active {
-  background: rgba(0, 255, 238, 0.10);
   color: #00ffee;
   font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 0 12px rgba(0, 255, 238, 0.25), inset 0 0 8px rgba(0, 255, 238, 0.08);
-  border: 1px solid rgba(0, 255, 238, 0.30);
-  position: relative;
 }
 
 /* Glowing dot before active link */
@@ -222,10 +239,16 @@ body {
   background: #00ffee;
   box-shadow: 0 0 8px #00ffee, 0 0 16px rgba(0, 255, 238, 0.6);
   animation: navDotPulse 2s infinite ease-in-out;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .nav-link.active {
-  padding-left: 22px; /* make room for the dot */
+  padding-left: 24px; /* make room for the dot */
+}
+
+.nav-link.active::before {
+  opacity: 1;
 }
 
 @keyframes navDotPulse {

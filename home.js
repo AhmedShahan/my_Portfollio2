@@ -38,6 +38,21 @@ document.addEventListener('click', (e) => {
 // ===== SCROLL SPY FOR NAVBAR =====
 const sections = document.querySelectorAll('section, main, .workshop-page');
 const navLinks = document.querySelectorAll('.nav-links .nav-link, .mobile-menu a');
+const navIndicator = document.getElementById('navIndicator');
+
+function updateIndicator() {
+  const activeLink = document.querySelector('.nav-links .nav-link.active');
+  if (activeLink && navIndicator) {
+    const rect = activeLink.getBoundingClientRect();
+    const parentRect = activeLink.parentElement.getBoundingClientRect();
+    
+    navIndicator.style.width = `${rect.width}px`;
+    navIndicator.style.left = `${rect.left - parentRect.left}px`;
+    navIndicator.classList.add('visible');
+  } else if (navIndicator) {
+    navIndicator.classList.remove('visible');
+  }
+}
 
 const observerOptions = {
   root: null,
@@ -57,6 +72,7 @@ const observer = new IntersectionObserver((entries) => {
             link.classList.add('active');
           }
         });
+        updateIndicator();
       }
     }
   });
@@ -64,5 +80,11 @@ const observer = new IntersectionObserver((entries) => {
 
 sections.forEach(section => {
   observer.observe(section);
+});
+
+// Update on resize and initial load
+window.addEventListener('resize', updateIndicator);
+window.addEventListener('load', () => {
+  setTimeout(updateIndicator, 500); // Small delay to ensure styles are applied
 });
 
