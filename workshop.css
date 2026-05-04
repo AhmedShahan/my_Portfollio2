@@ -440,6 +440,7 @@
   max-width: 1200px;
   margin: 100px auto;
   padding: 0 3%;
+  transition: opacity 0.4s ease;
 }
 
 .ws-leader-grid {
@@ -463,6 +464,7 @@
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
   overflow: hidden;
+  grid-column: span 2; /* Keep it wide in the grid */
 }
 
 .ws-leader-card::before {

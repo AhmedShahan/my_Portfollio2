@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.classList.add('active');
 
     const filter = btn.getAttribute('data-filter');
+    const leadershipSection = document.querySelector('.ws-leadership-section');
 
     cards.forEach(card => {
       const cat = card.getAttribute('data-cat');
@@ -71,6 +72,17 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => card.style.display = 'none', 300);
       }
     });
+
+    // Show leadership section only for 'all' or 'conference'
+    if (leadershipSection) {
+      if (filter === 'all' || filter === 'conference') {
+        leadershipSection.style.display = 'block';
+        setTimeout(() => leadershipSection.style.opacity = '1', 10);
+      } else {
+        leadershipSection.style.opacity = '0';
+        setTimeout(() => leadershipSection.style.display = 'none', 300);
+      }
+    }
 
     currentFilterIdx = index;
   }
