@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.ws-card, .ws-leader-card');
   let filterInterval;
   let currentFilterIdx = 0;
+  let inactivityTimeout;
 
   function setActiveFilter(index) {
     const btn = filterBtns[index];
     if (!btn) return;
 
-    // Toggle active button
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startFilterAutoPlay() {
     stopFilterAutoPlay();
+    // Cycle every 5 seconds once started
     filterInterval = setInterval(() => {
       let nextIdx = (currentFilterIdx + 1) % filterBtns.length;
       setActiveFilter(nextIdx);
@@ -84,21 +85,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function stopFilterAutoPlay() {
-    if (filterInterval) clearInterval(filterInterval);
+    if (filterInterval) {
+      clearInterval(filterInterval);
+      filterInterval = null;
+    }
   }
+
+  function handleActivity() {
+    stopFilterAutoPlay();
+    clearTimeout(inactivityTimeout);
+    // Wait for 5 seconds of no activity before starting auto-play
+    inactivityTimeout = setTimeout(startFilterAutoPlay, 5000);
+  }
+
+  // Listen for various user activities
+  ['mousemove', 'mousedown', 'keydown', 'scroll', 'touchstart'].forEach(name => {
+    document.addEventListener(name, handleActivity, { passive: true });
+  });
 
   filterBtns.forEach((btn, idx) => {
     btn.addEventListener('click', () => {
-      stopFilterAutoPlay();
+      handleActivity(); // Reset the timer on manual click
       setActiveFilter(idx);
-      // Resume after 8s of inactivity
-      clearTimeout(window.filterResumeTimeout);
-      window.filterResumeTimeout = setTimeout(startFilterAutoPlay, 8000);
     });
   });
 
-  // Start auto-play
-  startFilterAutoPlay();
+  // Start the initial inactivity timer
+  handleActivity();
 
   // 4. TIMELINE INTERACTION
   const timelineDots = document.querySelectorAll('.timeline-dot');
