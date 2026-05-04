@@ -321,6 +321,46 @@
   z-index: 5;
 }
 
+.workshop-page {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.workshop-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  animation: wsSweep 6s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.workshop-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(201, 168, 76, 0) 0%, rgba(201, 168, 76, 0.06) 50%, rgba(201, 168, 76, 0) 100%);
+  transform: skewX(-25deg);
+  animation: wsSweep 6s 3s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes wsSweep {
+  0% { left: -100%; }
+  50% { left: 200%; }
+  100% { left: 200%; }
+}
+
 .ws-card.featured {
   border-top-color: #00ffee; /* Cyan accent for latest */
 }

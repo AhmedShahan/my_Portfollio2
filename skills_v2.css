@@ -1,7 +1,7 @@
 /* ===== SKILLS V2 PAGE ===== */
 .skills-page{padding-top:80px;position:relative;z-index:1;background:rgba(8,27,41,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden}
-.skills-page::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(255,255,255,.04) 50%,rgba(255,255,255,0) 100%);transform:skewX(-25deg);animation:skillsSweep 7s infinite ease-in-out;pointer-events:none;z-index:0}
-.skills-page::after{content:'';position:absolute;top:0;left:-100%;width:35%;height:100%;background:linear-gradient(to right,rgba(201,168,76,0) 0%,rgba(201,168,76,.03) 50%,rgba(201,168,76,0) 100%);transform:skewX(-25deg);animation:skillsSweep 7s 3.5s infinite ease-in-out;pointer-events:none;z-index:0}
+.skills-page::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(255,255,255,.08) 50%,rgba(255,255,255,0) 100%);transform:skewX(-25deg);animation:skillsSweep 6s infinite ease-in-out;pointer-events:none;z-index:0}
+.skills-page::after{content:'';position:absolute;top:0;left:-100%;width:45%;height:100%;background:linear-gradient(to right,rgba(201,168,76,0) 0%,rgba(201,168,76,.06) 50%,rgba(201,168,76,0) 100%);transform:skewX(-25deg);animation:skillsSweep 6s 3s infinite ease-in-out;pointer-events:none;z-index:0}
 @keyframes skillsSweep{0%{left:-100%}50%{left:200%}100%{left:200%}}
 
 /* ===== HERO — compact, no wasted space ===== */
