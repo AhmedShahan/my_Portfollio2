@@ -386,13 +386,13 @@
         </p>
 
         <div class="ws-stats-row scroll-anim">
-          <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="4">0</span></div><span class="ws-stat-label">Workshops Led</span></div>
+          <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="6">0</span></div><span class="ws-stat-label">Workshops Led</span></div>
           <div class="ws-stat-divider"></div>
           <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="2">0</span></div><span class="ws-stat-label">Conferences</span></div>
           <div class="ws-stat-divider"></div>
-          <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="200">0</span><span class="ws-stat-plus">+</span></div><span class="ws-stat-label">Attendees Reached</span></div>
+          <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="3">0</span></div><span class="ws-stat-label">Volunteer Roles</span></div>
           <div class="ws-stat-divider"></div>
-          <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="2023">2023</span></div><span class="ws-stat-label">Active Since</span></div>
+          <div class="ws-stat-item"><div class="ws-stat-top"><span class="ws-stat-num" data-target="200">0</span><span class="ws-stat-plus">+</span></div><span class="ws-stat-label">Attendees Reached</span></div>
         </div>
       </div>
     </section>
@@ -401,16 +401,22 @@
     <div class="ws-timeline-wrap scroll-anim">
       <p class="ws-timeline-label">Event Timeline — Click a dot to highlight</p>
       <div class="ws-timeline">
-        <div class="timeline-dot active" data-date="Oct 8, 2023" data-id="ws1"></div>
-        <div class="timeline-dot" data-date="Sep 24, 2023" data-id="ws2"></div>
+        <div class="timeline-dot" data-date="Apr 4, 2014" data-id="wsScout1"></div>
+        <div class="timeline-dot" data-date="July 28, 2015" data-id="wsScout2"></div>
+        <div class="timeline-dot" data-date="Jan 26, 2017" data-id="wsScout3"></div>
         <div class="timeline-dot" data-date="Sep 8, 2023" data-id="ws3"></div>
+        <div class="timeline-dot" data-date="Sep 24, 2023" data-id="ws2"></div>
         <div class="timeline-dot" data-date="Sep 24, 2023" data-id="ws4"></div>
+        <div class="timeline-dot" data-date="Oct 8, 2023" data-id="ws1"></div>
+        <div class="timeline-dot active" data-date="Oct 12, 2025" data-id="ws0"></div>
+        <div class="timeline-dot" data-date="Nov 16, 2025" data-id="wsChatbot"></div>
       </div>
     </div>
 
     <!-- FILTERS -->
     <div class="ws-filters scroll-anim">
       <span class="ws-filter-label">FILTER:</span>
+      <div class="ws-filter-indicator" id="wsFilterIndicator"></div>
       <button class="ws-filter-btn active" data-filter="all">All (9)</button>
       <button class="ws-filter-btn" data-filter="genai">Gen & Agentic AI</button>
       <button class="ws-filter-btn" data-filter="github">GitHub</button>
@@ -458,7 +464,7 @@
         </div>
 
         <!-- Card: World Scout Jamboree -->
-        <div class="ws-card scroll-anim" data-cat="volunteer">
+        <div class="ws-card scroll-anim" id="wsScout2" data-cat="volunteer">
           <div class="ws-card-header">
             <div class="ws-card-thumb"><i class='bx bx-globe'></i></div>
           </div>
@@ -474,7 +480,7 @@
         </div>
 
         <!-- Card: National Rover Moot -->
-        <div class="ws-card scroll-anim" data-cat="volunteer">
+        <div class="ws-card scroll-anim" id="wsScout3" data-cat="volunteer">
           <div class="ws-card-header">
             <div class="ws-card-thumb"><i class='bx bx-group'></i></div>
           </div>
@@ -490,7 +496,7 @@
         </div>
 
         <!-- Card: SAANSO Jamboree -->
-        <div class="ws-card scroll-anim" data-cat="volunteer">
+        <div class="ws-card scroll-anim" id="wsScout1" data-cat="volunteer">
           <div class="ws-card-header">
             <div class="ws-card-thumb"><i class='bx bx-compass'></i></div>
           </div>

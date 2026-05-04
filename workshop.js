@@ -48,9 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. CATEGORY FILTERING
   const filterBtns = document.querySelectorAll('.ws-filter-btn');
   const cards = document.querySelectorAll('.ws-card, .ws-leader-card');
+  const wsFilterIndicator = document.getElementById('wsFilterIndicator');
   let filterInterval;
   let currentFilterIdx = 0;
   let inactivityTimeout;
+
+  function updateFilterIndicator() {
+    const activeBtn = document.querySelector('.ws-filter-btn.active');
+    if (activeBtn && wsFilterIndicator) {
+      const rect = activeBtn.getBoundingClientRect();
+      const parentRect = activeBtn.parentElement.getBoundingClientRect();
+      wsFilterIndicator.style.width = `${rect.width}px`;
+      wsFilterIndicator.style.left = `${rect.left - parentRect.left}px`;
+    }
+  }
 
   function setActiveFilter(index) {
     const btn = filterBtns[index];
@@ -58,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    updateFilterIndicator();
 
     const filter = btn.getAttribute('data-filter');
     const leadershipSection = document.querySelector('.ws-leadership-section');
@@ -122,30 +134,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  window.addEventListener('resize', updateFilterIndicator);
   // Start the initial inactivity timer
   handleActivity();
+  setTimeout(updateFilterIndicator, 500);
 
   // 4. TIMELINE INTERACTION
   const timelineDots = document.querySelectorAll('.timeline-dot');
   
   timelineDots.forEach(dot => {
     dot.addEventListener('click', () => {
-      // Toggle active dot
-      timelineDots.forEach(d => d.classList.remove('active'));
-      dot.classList.add('active');
-
       const targetId = dot.getAttribute('data-id');
       const targetCard = document.getElementById(targetId);
 
+      // Highlight dot
+      timelineDots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+
       if (targetCard) {
-        // Remove highlight from all cards
-        document.querySelectorAll('.ws-card').forEach(c => c.classList.remove('active-highlight'));
-        
-        // Highlight target card
-        targetCard.classList.add('active-highlight');
-        
-        // Scroll to card
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // If card is filtered out, switch to 'All'
+        const isHidden = window.getComputedStyle(targetCard).display === 'none';
+        if (isHidden) {
+          setActiveFilter(0); // Switch to 'All'
+        }
+
+        setTimeout(() => {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Subtle glow effect
+          targetCard.classList.add('active-highlight');
+          setTimeout(() => {
+            targetCard.classList.remove('active-highlight');
+          }, 2000);
+        }, isHidden ? 350 : 0);
       }
     });
   });
