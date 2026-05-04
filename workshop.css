@@ -191,7 +191,8 @@
 .timeline-dot.active {
   background: #00ffee;
   border-color: #00ffee;
-  box-shadow: 0 0 15px rgba(0, 255, 238, 0.5);
+  box-shadow: 0 0 20px rgba(0, 255, 238, 0.8), 0 0 40px rgba(0, 255, 238, 0.4);
+  transform: scale(1.2);
 }
 
 .timeline-dot:hover {
@@ -258,10 +259,15 @@
   border-top-color: #00ffee; /* Cyan accent for latest */
 }
 
-.ws-card:hover {
+.ws-card:hover, .ws-card.active-highlight {
   transform: translateY(-8px);
   background: rgba(8, 27, 41, 0.6);
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 255, 238, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 238, 0.1);
+}
+
+.ws-card.active-highlight {
+  border-left: 4px solid #00ffee;
 }
 
 .ws-card-header {

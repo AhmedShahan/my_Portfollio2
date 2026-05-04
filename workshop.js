@@ -48,27 +48,57 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. CATEGORY FILTERING
   const filterBtns = document.querySelectorAll('.ws-filter-btn');
   const cards = document.querySelectorAll('.ws-card, .ws-leader-card');
+  let filterInterval;
+  let currentFilterIdx = 0;
 
-  filterBtns.forEach(btn => {
+  function setActiveFilter(index) {
+    const btn = filterBtns[index];
+    if (!btn) return;
+
+    // Toggle active button
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+
+    cards.forEach(card => {
+      const cat = card.getAttribute('data-cat');
+      if (filter === 'all' || cat === filter) {
+        card.style.display = 'flex';
+        setTimeout(() => card.style.opacity = '1', 10);
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 300);
+      }
+    });
+
+    currentFilterIdx = index;
+  }
+
+  function startFilterAutoPlay() {
+    stopFilterAutoPlay();
+    filterInterval = setInterval(() => {
+      let nextIdx = (currentFilterIdx + 1) % filterBtns.length;
+      setActiveFilter(nextIdx);
+    }, 5000);
+  }
+
+  function stopFilterAutoPlay() {
+    if (filterInterval) clearInterval(filterInterval);
+  }
+
+  filterBtns.forEach((btn, idx) => {
     btn.addEventListener('click', () => {
-      // Toggle active button
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-cat');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'flex';
-          setTimeout(() => card.style.opacity = '1', 10);
-        } else {
-          card.style.opacity = '0';
-          setTimeout(() => card.style.display = 'none', 300);
-        }
-      });
+      stopFilterAutoPlay();
+      setActiveFilter(idx);
+      // Resume after 8s of inactivity
+      clearTimeout(window.filterResumeTimeout);
+      window.filterResumeTimeout = setTimeout(startFilterAutoPlay, 8000);
     });
   });
+
+  // Start auto-play
+  startFilterAutoPlay();
 
   // 4. TIMELINE INTERACTION
   const timelineDots = document.querySelectorAll('.timeline-dot');
