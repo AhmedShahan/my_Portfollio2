@@ -96,6 +96,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // Sync timeline dots with the visible cards of the new filter
+    setTimeout(() => {
+      const visibleCards = Array.from(cards).filter(c => c.style.display !== 'none');
+      const timelineDots = document.querySelectorAll('.timeline-dot');
+      
+      // Clear current active dots
+      timelineDots.forEach(d => d.classList.remove('active'));
+
+      if (filter === 'all') {
+        // For 'All' view, just highlight the first one initially
+        if (visibleCards.length > 0 && visibleCards[0].id) {
+          const dot = document.querySelector(`.timeline-dot[data-id="${visibleCards[0].id}"]`);
+          if (dot) dot.classList.add('active');
+        }
+      } else {
+        // Highlight ALL dots belonging to this category
+        visibleCards.forEach(card => {
+          if (card.id) {
+            const dot = document.querySelector(`.timeline-dot[data-id="${card.id}"]`);
+            if (dot) dot.classList.add('active');
+          }
+        });
+      }
+    }, 350);
+
     currentFilterIdx = index;
   }
 
@@ -139,36 +164,64 @@ document.addEventListener('DOMContentLoaded', () => {
   handleActivity();
   setTimeout(updateFilterIndicator, 500);
 
-  // 4. TIMELINE INTERACTION
+  // 4. TIMELINE INTERACTION & SCROLL SPY
   const timelineDots = document.querySelectorAll('.timeline-dot');
   
+  // A) Click to scroll
   timelineDots.forEach(dot => {
     dot.addEventListener('click', () => {
       const targetId = dot.getAttribute('data-id');
       const targetCard = document.getElementById(targetId);
 
-      // Highlight dot
+      // Highlight dot immediately
       timelineDots.forEach(d => d.classList.remove('active'));
       dot.classList.add('active');
 
       if (targetCard) {
-        // If card is filtered out, switch to 'All'
         const isHidden = window.getComputedStyle(targetCard).display === 'none';
         if (isHidden) {
-          setActiveFilter(0); // Switch to 'All'
+          setActiveFilter(0); // Switch to 'All' if target is hidden
         }
 
         setTimeout(() => {
           targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          
-          // Subtle glow effect
           targetCard.classList.add('active-highlight');
-          setTimeout(() => {
-            targetCard.classList.remove('active-highlight');
-          }, 2000);
+          setTimeout(() => targetCard.classList.remove('active-highlight'), 2000);
         }, isHidden ? 350 : 0);
       }
     });
+  });
+
+  // B) Scroll Spy for timeline
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -20% 0px',
+    threshold: 0.5
+  };
+
+  const timelineObserver = new IntersectionObserver((entries) => {
+    // Only use scroll-spy highlighting when "All" is selected
+    const activeBtn = document.querySelector('.ws-filter-btn.active');
+    const currentFilter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+
+    if (currentFilter !== 'all') return;
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const cardId = entry.target.id;
+        if (cardId) {
+          const correspondingDot = document.querySelector(`.timeline-dot[data-id="${cardId}"]`);
+          if (correspondingDot) {
+            timelineDots.forEach(d => d.classList.remove('active'));
+            correspondingDot.classList.add('active');
+          }
+        }
+      }
+    });
+  }, observerOptions);
+
+  cards.forEach(card => {
+    if (card.id) timelineObserver.observe(card);
   });
 
   // 5. MOBILE MENU
